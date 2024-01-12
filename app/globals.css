@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  /* fix for Chrome */
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+.fading-line {
+  height: 1px;
+  background-color: #E6E6E6;
+  width: 100%;
+  margin: 0 auto;
+  background-image: linear-gradient(to right, white 2%, #E6E6E6 50%, white 98%);
+  background-image: -o-linear-gradient(left, white 2%, #E6E6E6 50%, white 98%);
+  background-image: -moz-linear-gradient(left, white 2%, #E6E6E6 50%, white 98%);
+  background-image: -webkit-linear-gradient(left, white 2%, #E6E6E6 50%, white 98%);
+  background-image: -ms-linear-gradient(left, white 2%, #E6E6E6 50%, white 98%);
+  background-image: -webkit-gradient(linear, left bottom, right bottom, color-stop(0.02, white), color-stop(0.5, gray), color-stop(0.98, white));
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  @apply underline-offset-2;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)):hover {
+  @apply text-stone-600 decoration-stone-600;
+}
+
+.prose :where(blockquote):not(:where([class~="not-prose"] *)),
+.prose-base :where(p):not(:where([class~=not-prose] *)) {
+  @apply not-italic text-[0.95em];
+}
+
+.prose li::marker {
+  @apply text-stone-800;
+}
+
+.prose figcaption {
+  @apply text-center;
+}
+
+.prose p {
+  @apply leading-7;
+}
