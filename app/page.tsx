@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <section className='flex flex-col text-black'>
+    <section className='flex flex-col text-defaultText'>
       <h1 className='font-bold text-[2em] mb-4'>The Purpose Of Life Is Joy</h1>
       <p className="mt-6">
         Times are delicate. Our culture is miserable and self-hating. Intellectuals and politicians are, at best, desolate and vapid; more often they are destructive.

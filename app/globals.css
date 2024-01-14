@@ -32,7 +32,7 @@
 }
 
 .prose :where(a):not(:where([class~="not-prose"] *)):hover {
-  @apply text-stone-600 decoration-stone-600;
+  @apply text-neutral-800 decoration-neutral-800;
 }
 
 .prose :where(blockquote):not(:where([class~="not-prose"] *)),
@@ -41,7 +41,7 @@
 }
 
 .prose li::marker {
-  @apply text-stone-800;
+  @apply text-neutral-800;
 }
 
 .prose figcaption {

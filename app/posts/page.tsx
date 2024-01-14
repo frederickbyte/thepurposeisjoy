@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: 'Posts',
-  description: 'Read my thoughts on software, tech, and more.',
+  description: 'Thoughts, notes, and other ramblings.',
 };
 
 export default async function PostPage() {

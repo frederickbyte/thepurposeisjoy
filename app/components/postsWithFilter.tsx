@@ -11,7 +11,7 @@ export function PostCard(post: Post) {
       <time dateTime={post.updatedOn} className="block text-sm">
         {format(parseISO(post.updatedOn), 'LLLL d, yyyy')}
       </time>
-      <h2 className='font-[500] underline underline-offset-2 w-fit hover:text-slate-600 hover:decoration-slate-600'>
+      <h2 className='font-[500] underline underline-offset-2 w-fit hover:text-black-600 hover:decoration-black-600'>
         <Link href={post.url}>
           {post.title}
         </Link>
@@ -22,21 +22,25 @@ export function PostCard(post: Post) {
 }
 
 export default function PostsWithFilter() {
+  // search text
   const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = allPosts.filter((post: Post) =>
-    post.title.toUpperCase().includes(searchValue.toUpperCase())
-  );
+  // list of tags the user has selected to filter the posts
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  // list of all unique tags from the posts
+  const allTags: string[] = allPosts.map((post: Post) => post.tags.split(',').map((tag: string) => tag.trim())).flat();
+  // list of all posts that match the search text and the selected tags
+  const filteredBlogPosts = allPosts.filter((post: Post) => post.title.toUpperCase().includes(searchValue.toUpperCase()) && (selectedTags.length === 0 || post.tags.split(',').some((tag: string) => selectedTags.includes(tag))));
   return (
     <div>
       <p className="mb-4">
-        I enjoy writing as it helps me to organize my ideas and to think more clearly. Use the search below to filter through {allPosts.length} {allPosts.length === 1 ? 'article' : 'articles'}.
+        Thanks for stopping by! You can search or filter by category using the buttons below.
       </p>
       <div className="relative w-full mb-4">
         <input
           aria-label="Search articles"
           type="text"
           onChange={(e) => setSearchValue(e.target.value)}
-          placeholder="Search posts"
+          placeholder="Search posts..."
           className="block w-full px-4 py-2 bg-white border border-gray-200 rounded-md  focus:ring-pastelBlue focus:border-pastelBlue"
         />
         <svg
@@ -53,6 +57,26 @@ export default function PostsWithFilter() {
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
+      </div>
+      <div className='mb-4'>
+        {allTags.map((tag: string, idx: number) => {
+          return (
+            <button
+              key={idx}
+              type="button"
+              className={`rounded-full bg-white px-2.5 py-1 text-xs font-semibold shadow-sm ring-1 ring-inset ring-gray-300 ` + (selectedTags.includes(tag) ? 'text-white ring-gray-800 bg-gray-800' : 'text-gray-900  hover:bg-gray-50')}
+              onClick={() => {
+                if (selectedTags.includes(tag)) {
+                  setSelectedTags(selectedTags.filter((t: string) => t !== tag))
+                } else {
+                  setSelectedTags([...selectedTags, tag])
+                }
+              }}
+            >
+              {tag}
+            </button>
+          )
+        })}
       </div>
       {filteredBlogPosts.sort((a: Post, b: Post) => compareDesc(new Date(a.updatedOn), new Date(b.updatedOn))).map((post: Post, idx: number) => {
         return <PostCard key={idx} {...post} />
