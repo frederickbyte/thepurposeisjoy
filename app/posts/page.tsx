@@ -1,5 +1,5 @@
-import { ChevronRightIcon, HomeIcon } from '@/components/icons';
-import PostsWithFilter from '@/components/postsWithFilter';
+import { ChevronRightIcon, HomeIcon } from '@/app/components/icons';
+import PostsWithFilter from '@/app/components/postsWithFilter';
 import type { Metadata } from 'next';
 import Link from "next/link";
 
