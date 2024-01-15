@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Mdx } from '@/app/components/mdx';
 import { allPosts, Post } from '@/.contentlayer/generated';
-import { format, isEqual, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
 import { BackslashIcon, HomeIcon } from '@/app/components/icons';
 
@@ -40,21 +40,9 @@ export default async function PostItem({ params }: any) {
     notFound();
   }
 
-  // Get the current date.
-  const currentDate: Date = new Date();
-
-  // Get the date the post was published.
-  const publishedOn: Date = new Date(targetPost.publishedOn);
-
-  const yearsAgo: number = currentDate.getFullYear() - publishedOn.getFullYear();
-  const monthsAgo: number = currentDate.getMonth() - publishedOn.getMonth();
-  const daysAgo: number = currentDate.getDate() - publishedOn.getDate();
-
-  const daysAgoDateString: string = yearsAgo > 0 ? `${yearsAgo}yrs ago` : monthsAgo > 0 ? `${monthsAgo}mths ago` : daysAgo > 0 ? `${daysAgo}d ago` : 'Today';
-
   return (
     <section>
-  
+
       <nav className="flex mb-4" aria-label="Breadcrumb">
         <ol role="list" className="flex items-center space-x-2">
           <li>
@@ -89,24 +77,11 @@ export default async function PostItem({ params }: any) {
         </ol>
       </nav>
       <h1 className="font-bold text-balance text-xl lg:text-3xl">{targetPost.title}</h1>
-      <div className='flex flex-wrap gap-6 mt-2 mb-5'>
-        <div className="font-semibold text-sm bg-amber-100 rounded-md px-2 py-1 tracking-tighter w-fit">
-          Wrriten{' '}
-          <time dateTime={targetPost.publishedOn}>
-            {format(parseISO(targetPost.publishedOn), 'LLL d, yyyy')}
-          </time>
-          {' '}({daysAgoDateString})
-        </div>
-        {
-          !isEqual(new Date(targetPost.publishedOn), new Date(targetPost.updatedOn)) && (
-            <div className="font-semibold text-sm bg-pastelBlueHover rounded-md px-2 py-1 tracking-tighter w-fit">
-              Updated{' '}
-              <time dateTime={targetPost.updatedOn}>
-                {format(parseISO(targetPost.updatedOn), 'LLL d, yyyy')}
-              </time>
-            </div>
-          )
-        }
+      <div className="mt-2 mb-5 text-sm bg-pastelGreyHover rounded-md px-2 py-1 tracking-tight w-fit">
+        Wrriten{' '}
+        <time dateTime={targetPost.publishedOn}>
+          {format(parseISO(targetPost.publishedOn), 'LLL d, yyyy')}
+        </time>
       </div>
       <Mdx post={targetPost} />
     </section>
