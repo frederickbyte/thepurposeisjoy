@@ -30,6 +30,11 @@ export const Post = defineDocumentType(() => ({
       description: 'Tags of the post',
       required: true,
     },
+    typeId: {
+      type: 'string',
+      description: 'The type ID of the post',
+      required: true,
+    },
   },
   computedFields: {
     url: {

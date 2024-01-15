@@ -5,7 +5,7 @@ import { compareDesc, format, parseISO } from 'date-fns';
 import { allPosts, Post } from '@/.contentlayer/generated';
 import { useState } from 'react';
 
-export function PostCard(post: Post) {
+export function ThoughtCard(post: Post) {
   return (
     <div className="flex flex-col mb-6">
       <time dateTime={post.updatedOn} className="block text-sm">
@@ -21,15 +21,15 @@ export function PostCard(post: Post) {
   )
 }
 
-export default function PostsWithFilter() {
+export default function ThoughtsWithFilter() {
   // search text
   const [searchValue, setSearchValue] = useState('');
   // list of tags the user has selected to filter the posts
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   // list of all unique tags from the posts
-  const allTags: string[] = allPosts.filter((post: Post) => post.typeId === '1').map((post: Post) => post.tags.split(',').map((tag: string) => tag.trim())).flat();
-  // list of all posts that match the search text and the selected tags
-  const filteredPosts = allPosts.filter((post: Post) => post.typeId === '1' && post.title.toUpperCase().includes(searchValue.toUpperCase()) && (selectedTags.length === 0 || post.tags.split(',').some((tag: string) => selectedTags.includes(tag))));
+  const allTags: string[] = allPosts.filter((post: Post) => post.typeId === '2').map((post: Post) => post.tags.split(',').map((tag: string) => tag.trim())).flat();
+  // list of all thoughts that match the search text and the selected tags
+  const filteredThoughts = allPosts.filter((post: Post) => post.typeId === '2' && post.title.toUpperCase().includes(searchValue.toUpperCase()) && (selectedTags.length === 0 || post.tags.split(',').some((tag: string) => selectedTags.includes(tag))));
   return (
     <div>
       <div className="relative w-full mb-4">
@@ -37,7 +37,7 @@ export default function PostsWithFilter() {
           aria-label="Search articles"
           type="text"
           onChange={(e) => setSearchValue(e.target.value)}
-          placeholder="Search posts..."
+          placeholder="Search thoughts..."
           className="block w-full px-4 py-2 bg-white border border-gray-200 rounded-md  focus:ring-pastelBlue focus:border-pastelBlue"
         />
         <svg
@@ -75,8 +75,8 @@ export default function PostsWithFilter() {
           )
         })}
       </div>
-      {filteredPosts.sort((a: Post, b: Post) => compareDesc(new Date(a.updatedOn), new Date(b.updatedOn))).map((post: Post, idx: number) => {
-        return <PostCard key={idx} {...post} />
+      {filteredThoughts.sort((a: Post, b: Post) => compareDesc(new Date(a.updatedOn), new Date(b.updatedOn))).map((post: Post, idx: number) => {
+        return <ThoughtCard key={idx} {...post} />
       })}
     </div>
   )
