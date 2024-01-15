@@ -1,11 +1,11 @@
-import { ChevronRightIcon, HomeIcon } from '@/app/components/icons';
+import { BackslashIcon, HomeIcon } from '@/app/components/icons';
 import type { Metadata } from 'next';
 import Link from "next/link";
 import ThoughtsWithFilter from '../components/thoughtsWithFilter';
 
 export const metadata: Metadata = {
-  title: 'PosThoughtsts',
-  description: 'Some thoughts',
+  title: 'Thoughts',
+  description: 'Some thoughts and ideas',
 };
 
 export default async function PostPage() {
@@ -23,7 +23,7 @@ export default async function PostPage() {
           </li>
           <li >
             <div className="flex items-center">
-              <ChevronRightIcon aria-hidden="true" />
+              <BackslashIcon aria-hidden="true" />
               <div
                 className="ml-2 text-[0.9em] font-medium text-defaultText"
                 aria-current='page'

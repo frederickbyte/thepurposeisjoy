@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         defaultText: '#000000',
         golden: '#FFDD55',
-        pastelBlue: 'rgba(83,143,247, 0.6)',
+        pastelBlue: '#aaccff',
         pastelBlueHover: 'rgba(83,143,247, 0.4)',
         pastelGrey: 'rgba(202, 210, 212, 1)',
         pastelGreyHover: 'rgba(202, 210, 212, 0.8)',

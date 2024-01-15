@@ -1,4 +1,4 @@
-import { ChevronRightIcon, HomeIcon } from '@/app/components/icons';
+import { BackslashIcon, HomeIcon } from '@/app/components/icons';
 import PostsWithFilter from '@/app/components/postsWithFilter';
 import type { Metadata } from 'next';
 import Link from "next/link";
@@ -23,7 +23,7 @@ export default async function PostPage() {
           </li>
           <li >
             <div className="flex items-center">
-              <ChevronRightIcon aria-hidden="true" />
+              <BackslashIcon aria-hidden="true" />
               <div
                 className="ml-2 text-[0.9em] font-medium text-defaultText"
                 aria-current='page'

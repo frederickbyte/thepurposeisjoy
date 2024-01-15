@@ -9,7 +9,7 @@ export function ThoughtCard(post: Post) {
   return (
     <div className="flex flex-col mb-6">
       <time dateTime={post.updatedOn} className="block text-sm">
-        {format(parseISO(post.updatedOn), 'LLLL d, yyyy')}
+        {format(parseISO(post.updatedOn), 'LLL d, yyyy')}
       </time>
       <h2 className='font-[500] underline underline-offset-2 w-fit hover:text-black-600 hover:decoration-black-600'>
         <Link href={post.url}>
@@ -26,7 +26,7 @@ export default function ThoughtsWithFilter() {
   const [searchValue, setSearchValue] = useState('');
   // list of tags the user has selected to filter the posts
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  // list of all unique tags from the posts
+  // list of all unique tags from the thoughts
   const allTags: string[] = allPosts.filter((post: Post) => post.typeId === '2').map((post: Post) => post.tags.split(',').map((tag: string) => tag.trim())).flat();
   // list of all thoughts that match the search text and the selected tags
   const filteredThoughts = allPosts.filter((post: Post) => post.typeId === '2' && post.title.toUpperCase().includes(searchValue.toUpperCase()) && (selectedTags.length === 0 || post.tags.split(',').some((tag: string) => selectedTags.includes(tag))));

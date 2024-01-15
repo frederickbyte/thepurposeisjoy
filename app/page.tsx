@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { DocumentIcon, ThoughtsIcon } from "./components/icons";
+
 export default function Home() {
   return (
     <section className='flex flex-col text-defaultText'>
@@ -27,7 +30,7 @@ export default function Home() {
         I haven't, and neither should you.
       </p>
       <p className="mt-6">
-        Life <em>can</em> be better. But evil ideas are handicapping your life and the lives of those you care about.
+        <span className='py-[0.15em] px-1 rounded bg-pastelBlue'>Life can be better.</span> But evil ideas are handicapping your life and the lives of those you care about.
         Bad ideas produce immoral men; immoral men become unprincipled politicians; unprincipled politicians write and pass legislation preventing people and businesses from acting freely. Only reason and persuasion can reverse this trend. Force and power never have and never will make us freer.
       </p>
       <p className="mt-6">
@@ -53,6 +56,26 @@ export default function Home() {
       <p className="mt-6">
         Remember that no matter how hopeless the situation may appear, things can improve. It will take time - but the right ideas will win out in the end. We have reality on our side.
       </p>
+      <div className="flex flex-wrap mt-4">
+        <Link
+          href={'/thoughts'}
+          as={'/thoughts'}
+          title="Some thoughts and random ideas"
+          className='inline-flex items-center gap-x-2 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+        >
+          Thoughts
+          <ThoughtsIcon />
+        </Link>
+        <Link
+          href={'/posts'}
+          as={'/posts'}
+          title="Longer posts and discussions"
+          className='inline-flex items-center gap-x-2 rounded-md bg-white px-3 py-2 ml-6 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+        >
+          Posts
+          <DocumentIcon />
+        </Link>
+      </div>
     </section >
   )
 }

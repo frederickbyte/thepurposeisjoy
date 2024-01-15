@@ -4,7 +4,7 @@ import { Mdx } from '@/app/components/mdx';
 import { allPosts, Post } from '@/.contentlayer/generated';
 import { format, isEqual, parseISO } from 'date-fns';
 import Link from 'next/link';
-import { ChevronRightIcon, HomeIcon } from '@/app/components/icons';
+import { BackslashIcon, HomeIcon } from '@/app/components/icons';
 
 export async function generateStaticParams() {
   return allPosts.map((post: Post) => ({
@@ -67,7 +67,7 @@ export default async function PostItem({ params }: any) {
           </li>
           <li>
             <div className="flex items-center space-x-2">
-              <ChevronRightIcon aria-hidden="true" />
+              <BackslashIcon aria-hidden="true" />
               <Link
                 href="/posts"
                 className="text-[0.9em] text-defaultText hover:text-black hover:underline hover:underline-offset-2">
@@ -77,7 +77,7 @@ export default async function PostItem({ params }: any) {
           </li>
           <li>
             <div className="flex items-center">
-              <ChevronRightIcon aria-hidden="true" />
+              <BackslashIcon aria-hidden="true" />
               <div
                 className="ml-2 text-[0.9em] text-defaultText"
                 aria-current='page'
@@ -93,7 +93,7 @@ export default async function PostItem({ params }: any) {
         <div className="font-semibold text-sm bg-amber-100 rounded-md px-2 py-1 tracking-tighter w-fit">
           Wrriten{' '}
           <time dateTime={targetPost.publishedOn}>
-            {format(parseISO(targetPost.publishedOn), 'LLLL d, yyyy')}
+            {format(parseISO(targetPost.publishedOn), 'LLL d, yyyy')}
           </time>
           {' '}({daysAgoDateString})
         </div>
@@ -102,7 +102,7 @@ export default async function PostItem({ params }: any) {
             <div className="font-semibold text-sm bg-pastelBlueHover rounded-md px-2 py-1 tracking-tighter w-fit">
               Updated{' '}
               <time dateTime={targetPost.updatedOn}>
-                {format(parseISO(targetPost.updatedOn), 'LLLL d, yyyy')}
+                {format(parseISO(targetPost.updatedOn), 'LLL d, yyyy')}
               </time>
             </div>
           )
