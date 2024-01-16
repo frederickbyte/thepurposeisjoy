@@ -16,16 +16,8 @@ export default function NotFound() {
   return (
     <div className="bg-white">
       <main className="mx-auto w-full max-w-7xl px-6 pb-16 pt-10 sm:pb-24 lg:px-8">
-        <img
-          className="mx-auto h-10 w-auto sm:h-12"
-          src="/favicon.ico"
-          alt="The Purpose Is Joy"
-        />
         <div className="mx-auto mt-20 max-w-2xl text-center sm:mt-24">
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">This page does not exist</h1>
-          <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8">
-            Here's some things you may find interesting:
-          </p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">We couldn't find this page</h1>
         </div>
         <div className="mx-auto mt-16 flow-root max-w-lg sm:mt-20">
           <h2 className="sr-only">Popular pages</h2>
@@ -37,10 +29,10 @@ export default function NotFound() {
                 </div>
                 <div className="flex-auto">
                   <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                    <a href={link.href}>
+                    <Link href={link.href} as={link.href} title={link.name} className="hover:underline hover:underline-offset-2">
                       <span className="absolute inset-0" aria-hidden="true" />
                       {link.name}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-gray-600">{link.description}</p>
                 </div>
@@ -51,10 +43,10 @@ export default function NotFound() {
             ))}
           </ul>
           <div className="mt-10 flex justify-center">
-            <a href="/" className="text-sm font-semibold leading-6 underline underline-offset-2">
+            <Link href="/" as='/' title='Home' className="text-sm font-semibold leading-6 hover:underline hover:underline-offset-2">
               <span aria-hidden="true">&larr;&nbsp;</span>
               Back home
-            </a>
+            </Link>
           </div>
         </div>
       </main>
