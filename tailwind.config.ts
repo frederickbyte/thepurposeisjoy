@@ -12,11 +12,11 @@ const config: Config = {
         defaultText: '#000000',
         golden: '#FFDD55',
         pastelBlue: '#aaccff',
-        pastelBlueHover: 'rgba(83,143,247, 0.4)',
         pastelGrey: 'rgba(202, 210, 212, 1)',
         pastelGreyHover: 'rgba(202, 210, 212, 0.8)',
+        pastelPurple: '#929cf9',
         pastelYellow: 'rgba(242, 227, 155, 1)',
-        pastelYellowHover: 'rgba(242, 227, 155, 0.8)',
+        salmon: '#f495c6'
       },
       fontFamily: {
         sansSerif: ['var(--font-inter)', 'sans-serif'],
