@@ -1,3 +1,3 @@
 # thepurposeisjoy.com
 
-A simple site containing thoughts, notes, and other miscelleneous writing. Powered by [Next.js](https://nextjs.org/)
+Simple collection of thoughts and notes. Powered by [Next.js](https://nextjs.org/)
