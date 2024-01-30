@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { DocumentIcon, ThoughtsIcon } from "./components/icons";
 import { allPosts, Post } from '@/.contentlayer/generated';
 import NextImage, { ImageProps } from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
@@ -41,14 +40,13 @@ export function PostCard(post: Post) {
   return (
     <div className="flex flex-col mb-6">
       <time dateTime={post.updatedOn} className="block text-sm">
-        {format(parseISO(post.updatedOn), 'LLL d, yyyy')}
+        {format(parseISO(post.updatedOn), 'LLL d')}
       </time>
-      <h2 className='font-[500] underline underline-offset-2 w-fit hover:text-stone-600 hover:decoration-stone-600'>
+      <h2 className='font-[500] w-fit hover:underline hover:underline-offset-2'>
         <Link href={post.url}>
           {post.title}
         </Link>
       </h2>
-      <div className='text-sm'>{post.summary}</div>
     </div>
   )
 }
@@ -82,7 +80,7 @@ export default function Home() {
             <ul className='list-none mt-2'>
               {postsByMonth[month].map((post: Post) => {
                 return (
-                  <li key={post._raw.flattenedPath} className='ms-6 mt-1'>
+                  <li key={post._raw.flattenedPath} className='ms-0 mt-1'>
                     <PostCard key={idx} {...post} />
                   </li>
                 )
