@@ -27,11 +27,11 @@ export default function PostsWithFilter() {
   // list of tags the user has selected to filter the posts
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   // list of all unique tags from the posts
-  const allTags: string[] = allPosts.filter((post: Post) => post.typeId === '1').map((post: Post) => post.tags.split(',').map((tag: string) => tag.trim())).flat();
+  const allTags: string[] = allPosts.filter((post: Post) => post.typeId === '1').map((post: Post) => post.tags.split(',').map((tag: string) => tag.trim())).flat().filter((tag: string, idx: number, self: string[]) => self.indexOf(tag) === idx);
   // list of all posts that match the search text and the selected tags
   const filteredPosts = allPosts.filter((post: Post) => post.typeId === '1' && post.title.toUpperCase().includes(searchValue.toUpperCase()) && (selectedTags.length === 0 || post.tags.split(',').some((tag: string) => selectedTags.includes(tag))));
   return (
-    <div>
+    <div className='min-w-96'>
       <div className="relative w-full mb-4">
         <input
           aria-label="Search articles"
@@ -56,12 +56,12 @@ export default function PostsWithFilter() {
         </svg>
       </div>
       <div>
-        {allTags.map((tag: string, idx: number) => {
+        {allTags.sort().map((tag: string, idx: number) => {
           return (
             <button
               key={idx}
               type="button"
-              className={`rounded-full bg-white px-2.5 py-1 text-xs font-semibold shadow-sm ring-1 ring-inset ring-gray-300 ` + (selectedTags.includes(tag) ? 'text-white ring-gray-800 bg-gray-800' : 'text-gray-900  hover:bg-gray-50')}
+              className={`rounded-full mr-1.5 px-2.5 py-1 text-xs font-semibold shadow-sm ring-1 ring-inset ring-gray-300 ` + (selectedTags.includes(tag) ? 'text-white ring-gray-800 bg-gray-800' : 'text-gray-900  hover:bg-gray-50')}
               onClick={() => {
                 if (selectedTags.includes(tag)) {
                   setSelectedTags(selectedTags.filter((t: string) => t !== tag))
@@ -70,7 +70,7 @@ export default function PostsWithFilter() {
                 }
               }}
             >
-              {tag}
+              #{tag}
             </button>
           )
         })}
