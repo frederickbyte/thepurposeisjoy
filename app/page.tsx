@@ -36,7 +36,7 @@ const customComponents = {
   InfoCalloutWithLabel
 };
 
-export function PostCard(post: Post) {
+const PostCard = (post: Post) => {
   return (
     <div className="flex flex-col mb-6">
       <time dateTime={post.updatedOn} className="block text-sm">
