@@ -1,6 +1,7 @@
 import './globals.css';
 import Footer from '@/app/components/footer';
 import localFont from 'next/font/local';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   title: {
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: {
       <body className='antialiased flex flex-col flex-1 text-base font-sansSerif text-defaultText max-w-2xl mx-4 mt-8 md:mt-20 md:text-lg lg:mt-32 lg:mx-auto'>
         <main className='flex flex-col flex-1'>
           {children}
+          <SpeedInsights />
         </main>
         <Footer />
       </body>

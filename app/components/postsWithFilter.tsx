@@ -11,7 +11,7 @@ export function PostCard(post: Post) {
       <time dateTime={post.updatedOn} className="block text-sm">
         {format(parseISO(post.updatedOn), 'LLL d, yyyy')}
       </time>
-      <h2 className='font-[500] underline underline-offset-2 w-fit hover:text-black-600 hover:decoration-black-600'>
+      <h2 className='font-[500] w-fit hover:text-black-600 hover:underline hover:underline-offset-2 hover:decoration-black-600'>
         <Link href={post.url}>
           {post.title}
         </Link>
