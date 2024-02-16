@@ -59,7 +59,7 @@ export default function Home() {
   const Component = useMDXComponent(latestPost.body.code);
   return (
     <section className='flex flex-col text-defaultText'>
-      <article className='prose prose-quoteless prose-md prose-neutral prose-p:text-defaultText prose-ol:text-defaultText prose-ul:text-defaultText prose-blockquote:text-defaultText md:prose-lg mb-8'>
+      <article className='prose prose-quoteless prose-md prose-neutral prose-p:text-defaultText prose-ol:text-defaultText prose-ul:text-defaultText prose-blockquote:text-defaultText md:prose-md lg:prose-lg mb-8'>
         <Component components={{ ...customComponents as any }} />
       </article>
       {
