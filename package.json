@@ -14,13 +14,13 @@
     "date-fns": "^3.6.0",
     "next": "14.2.3",
     "next-contentlayer": "^0.3.4",
-    "react": "18.2.0",
+    "react": "18.3.1",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.12",
     "@types/node": "20.12.7",
-    "@types/react": "18.2.79",
+    "@types/react": "18.3.1",
     "@types/react-dom": "18.2.25",
     "autoprefixer": "^10.4.19",
     "postcss": "8.4.38",
